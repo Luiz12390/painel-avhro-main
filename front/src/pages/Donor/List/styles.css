@@ -1,0 +1,17 @@
+.title-table {
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #e0e0e0;
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.content-title {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 16px;
+  margin-left: 40px;
+  font-weight: 500;
+}
