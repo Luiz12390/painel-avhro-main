@@ -5,9 +5,8 @@ import { donationDeliveredRoutes } from "./routes/donationDelivered";
 import { donationReceivedRoutes } from "./routes/donationReceived";
 import { familyRoutes } from "./routes/family";
 import { donorRoutes } from "./routes/donor";
-import { volunteerRoutes } from "./routes/volunteer";
-import { eventRoutes } from "./routes/event";
-import { volunteerEventRoutes } from "./routes/volunteerEvent";
+import { itemRoutes } from "./routes/item";
+import { userRoutes } from "./routes/user";
 
 const app = fastify({
   logger: true
@@ -22,8 +21,7 @@ app.register(donationDeliveredRoutes);
 app.register(donationReceivedRoutes);
 app.register(familyRoutes);
 app.register(donorRoutes);
-app.register(volunteerRoutes);
-app.register(eventRoutes);
-app.register(volunteerEventRoutes);
+app.register(itemRoutes);
+app.register(userRoutes);
 
 export default app;

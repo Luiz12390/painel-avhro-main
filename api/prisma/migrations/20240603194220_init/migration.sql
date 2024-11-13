@@ -41,30 +41,21 @@ CREATE TABLE "DonationReceived" (
     CONSTRAINT "DonationReceived_donorId_fkey" FOREIGN KEY ("donorId") REFERENCES "Donor" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
--- CreateTable
-CREATE TABLE "Volunteer" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "name" TEXT,
-    "cpf" TEXT,
-    "phone" TEXT,
-    "dateRegistration" DATETIME
-);
-
--- CreateTable
-CREATE TABLE "Event" (
+-- CreateTable for Item
+CREATE TABLE "Item" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "date" DATETIME NOT NULL,
-    "location" TEXT,
-    "description" TEXT
+    "description" TEXT,
+    "quantity" INTEGER NOT NULL,
+    "dateAdded" DATETIME NOT NULL
 );
 
--- CreateTable
-CREATE TABLE "EventParticipation" (
+-- CreateTable for User
+CREATE TABLE "User" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "volunteerId" INTEGER NOT NULL,
-    "eventId" INTEGER NOT NULL,
-    "role" TEXT,
-    CONSTRAINT "EventParticipation_volunteerId_fkey" FOREIGN KEY ("volunteerId") REFERENCES "Volunteer" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT "EventParticipation_eventId_fkey" FOREIGN KEY ("eventId") REFERENCES "Event" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "username" TEXT NOT NULL UNIQUE,
+    "password" TEXT NOT NULL,
+    "email" TEXT NOT NULL UNIQUE,
+    "role" TEXT NOT NULL CHECK ("role" IN ('admin', 'donor', 'volunteer', 'donatary')),
+    "dateRegistration" DATETIME NOT NULL
 );
